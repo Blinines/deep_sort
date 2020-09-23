@@ -2,6 +2,8 @@
 
 ## Introduction
 
+This repository was forked from the original deep_sort implementation that you can find [here](https://github.com/nwojke/deep_sort). Modifications were made for tensorflow compatibility and in order to use it for an academic project.
+
 This repository contains code for *Simple Online and Realtime Tracking with a Deep Association Metric* (Deep SORT).
 We extend the original [SORT](https://github.com/abewley/sort) algorithm to
 integrate appearance information based on a deep appearance descriptor.
