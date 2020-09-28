@@ -82,7 +82,7 @@ class ImageEncoder(object):
         self.output_var = tf.get_default_graph().get_tensor_by_name(
             "net/%s:0" % output_name)
 
-        assert len(self.output_var.get_shape()) == 2
+        assert len(self.output_var.get_shape()) == 3
         assert len(self.input_var.get_shape()) == 4
         self.feature_dim = self.output_var.get_shape().as_list()[-1]
         self.image_shape = self.input_var.get_shape().as_list()[1:]
@@ -199,15 +199,27 @@ def parse_args():
     parser.add_argument(
         "--output_dir", help="Output directory. Will be created if it does not"
         " exist.", default="detections")
+    parser.add_argument(
+        "--input_name", help="Input name for the encoder box",
+        default="images")
+    parser.add_argument(
+        "--output_name", help="Output name for the encoder box",
+        default="features")
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
-    encoder = create_box_encoder(args.model, batch_size=32)
+    encoder = create_box_encoder(args.model, args.input_name,
+                                 args.output_name, batch_size=32)
     generate_detections(encoder, args.mot_dir, args.output_dir,
                         args.detection_dir)
 
 
 if __name__ == "__main__":
     main()
+
+
+# test for input/output
+# input_name = image_tensor
+# output_name = 
