@@ -46,7 +46,7 @@ def extract_image_patch(image, bbox, patch_shape):
 
     """
     bbox = np.array(bbox)
-    if patch_shape is not None:
+    if (patch_shape[0] is not None) and (patch_shape[1] is not None):
         # correct aspect ratio to patch shape
         target_aspect = float(patch_shape[1]) / patch_shape[0]
         new_width = target_aspect * bbox[3]
