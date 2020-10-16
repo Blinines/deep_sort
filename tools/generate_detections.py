@@ -82,7 +82,7 @@ class ImageEncoder(object):
         self.output_var = tf.get_default_graph().get_tensor_by_name(
             "net/%s:0" % output_name)
 
-        assert len(self.output_var.get_shape()) == 3
+        assert len(self.output_var.get_shape()) == 2
         assert len(self.input_var.get_shape()) == 4
         self.feature_dim = self.output_var.get_shape().as_list()[-1]
         self.image_shape = self.input_var.get_shape().as_list()[1:]
